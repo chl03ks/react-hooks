@@ -3,15 +3,15 @@
 
 import React, {useState, useEffect} from 'react'
 
-const useLocalStorageState = (itemName, initialValue) => {
-  const [name, setName] = useState(
-    () => window.localStorage.getItem('name') || initialValue,
+const useLocalStorageState = (localStorageKey, initialValue = '') => {
+  const [state, setState] = useState(
+    () => window.localStorage.getItem(localStorageKey) || initialValue,
   )
   useEffect(() => {
-    window.localStorage.setItem('name', name)
-  }, [name])
+    window.localStorage.setItem(localStorageKey, state)
+  }, [localStorageKey, state])
 
-  return [name, setName]
+  return [state, setState]
 }
 
 function Greeting({initialName = ''}) {
