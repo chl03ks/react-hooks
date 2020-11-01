@@ -1,18 +1,14 @@
 // Lifting state
 // http://localhost:3000/isolated/exercise/03.js
 
-import React from 'react'
+import React, {useState} from 'react'
 
 function Name() {
   const [name, setName] = useState('')
   return (
     <div>
       <label htmlFor="name">Name: </label>
-      <input
-        id="name"
-        value={name}
-        onChange={event => onNameChange(event.target.value)}
-      />
+      <input id="name" value={name} onChange={setName} />
     </div>
   )
 }
